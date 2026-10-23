@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HiloNova CAD · Software de patronaje digital, graduación y trazo</title>
-  <meta name="description" content="Diseña patrones 2D, gradúa tallas automáticamente y optimiza el trazo de corte desde tu navegador. Ficha técnica, costeo y exportación DXF y PDF 1:1.">
+  <meta name="description" content="Diseña patrones 2D, gradúa tallas y calcula el acomodo de corte con consumo de tela y aprovechamiento, desde tu navegador. Ficha técnica y exportación a PDF, SVG y DXF.">
   <meta property="og:title" content="HiloNova CAD · Patronaje digital avanzado">
-  <meta property="og:description" content="Patrones 2D, graduación de tallas y trazo optimizado para producción. Desde tu navegador.">
+  <meta property="og:description" content="Patrones 2D, graduación de tallas, trazo con consumo de tela y ficha técnica. Desde tu navegador.">
   <meta property="og:image" content="assets/img/screen-trazo.jpg">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect width=%2724%27 height=%2724%27 rx=%276%27 fill=%27%231f7fe0%27/%3E%3Cpath d=%27M7 17V7l5 7V7M12 17l5-10v10%27 stroke=%27white%27 stroke-width=%272%27 fill=%27none%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -87,77 +87,86 @@
     .wa { position: fixed; right: 20px; bottom: 20px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #25d366; box-shadow: 0 10px 30px rgba(37,211,102,.4); z-index: 30; }
     .wa svg { width: 30px; height: 30px; fill: #fff; }
     @media (max-width: 900px) { .links { display: none; } .grid, .flow, .split, .price { grid-template-columns: 1fr; } .step, .step:first-child { clip-path: none; } section { padding: 60px 0; } }
+    .beta { background: rgba(251,191,36,.1); border-bottom: 1px solid rgba(251,191,36,.3); color: #fde7a6; text-align: center; font-size: 13px; padding: 8px 14px; }
   </style>
 </head>
 <body>
+<div class="beta">Versión en pruebas: el cobro y las cuentas reales todavía no están activos. Tus proyectos se guardan en tu navegador.</div>
 <header><div class="wrap nav">
   <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 19V5l7 9V5"/><path d="M12 19l7-14v14"/></svg></span>HiloNova CAD</a>
   <nav class="links"><a href="#modulos">Módulos</a><a href="#flujo">Flujo</a><a href="#exportar">Exportación</a><a href="#precio">Precio</a><a href="#faq">Preguntas</a></nav>
   <span class="sp"></span>
-  <a class="btn sm" href="app.html">Entrar</a>
-  <a class="btn sm pri" href="app.html?comprar=1">Comprar licencia</a>
+  <a class="btn sm" href="programa/auth/signin/">Entrar</a>
+  <a class="btn sm pri" href="programa/auth/signup/">Crear cuenta</a>
 </div></header>
 
 <main>
   <div class="wrap hero">
     <span class="eyebrow">Software de patronaje digital · <b>Graduación · Trazo · Producción</b></span>
     <h1>Patronaje digital <span class="g">avanzado</span>, desde tu navegador</h1>
-    <p class="lead">Diseña patrones 2D, gradúa tallas con reglas por punto y optimiza el acomodo de corte con cálculo de eficiencia y consumo de tela. Sin instalar nada, en Windows, Mac o tablet.</p>
-    <div class="cta"><a class="btn pri" href="app.html">Probar gratis</a><a class="btn" href="#precio">Ver precio</a></div>
-    <div class="note">Crea tu cuenta y prueba todas las herramientas en modo demo.</div>
+    <p class="lead">Diseña patrones 2D, gradúa tallas y calcula el acomodo de corte con el consumo de tela y el porcentaje de aprovechamiento. Sin instalar nada: funciona en el navegador de tu computadora.</p>
+    <div class="cta"><a class="btn pri" href="programa/auth/signup/">Crear cuenta</a><a class="btn" href="#precio">Ver precio</a></div>
+    <div class="note">Probado en Chrome de escritorio. Las imágenes de abajo son capturas del programa.</div>
     <div class="tabs" id="tabs">
       <button class="tab on" data-img="patronaje">Patronaje 2D</button><button class="tab" data-img="graduacion">Graduación</button><button class="tab" data-img="trazo">Trazo</button><button class="tab" data-img="produccion">Producción</button>
     </div>
-    <div class="shot"><img id="shot" src="assets/img/screen-patronaje.jpg" alt="Editor de patronaje 2D con nido de tallas S, M, L y XL" width="1600" height="960"></div>
+    <div class="shot"><img id="shot" src="assets/img/screen-patronaje.jpg" alt="Editor de patronaje 2D con el nido de tallas S, M, L y XL sobre una blusa clásica" width="800" height="495"></div>
   </div>
 
   <section id="modulos"><div class="wrap">
-    <div class="sh"><small>Módulos</small><h2>Todo el proceso del patrón a la mesa de corte</h2><p>Las mismas etapas que trabajan los sistemas CAD de la industria de la confección, en una herramienta clara y en español.</p></div>
+    <div class="sh"><small>Módulos</small><h2>Todo el proceso del patrón a la mesa de corte</h2><p>Las etapas del patronaje digital, en una herramienta clara y en español.</p></div>
     <div class="grid">
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3l-3 4v12h6V9l3-2 3 2v10h6V7l-3-4"/><path d="M9 3c0 2 1.3 3 3 3s3-1 3-3"/></svg></div><h3>Patronaje CAD 2D</h3><p>Bases paramétricas trazadas con tus medidas y herramientas de edición precisas.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Blusa, falda recta y pantalón base</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Curvas, puntos, piquetes, hilo y doblez</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Margen de costura por tramo</li></ul></div>
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V8l4-4h8l4 4v12"/><path d="M7 20V10l3-3h4l3 3v10"/><path d="M10 20v-7h4v7"/></svg></div><h3>Escalado de tallas</h3><p>Graduación automática desde la tabla de medidas o manual con tabla de reglas.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Reglas Δx / Δy por punto y talla</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Nido de tallas a color</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Copiar regla, proporcional y espejo</li></ul></div>
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 5v14M12 5v8h9.5M12 13v6"/></svg></div><h3>Optimización de tela</h3><p>Acomodo automático que prueba cientos de combinaciones y se queda con el trazo más corto.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Eficiencia y consumo por talla</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Sentido de tela, orilla y encogimiento</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Piezas en par y al doblez</li></ul></div>
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/></svg></div><h3>Ficha técnica y costeo</h3><p>Costo por prenda con tela, avíos y minutos de confección, y planeación de lote.</p></div>
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Verificación de costuras</h3><p>Compara costados, hombros, copa contra sisa y escote contra cuello en todas las tallas.</p></div>
-      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></div><h3>Exportación profesional</h3><p>DXF con capas AAMA, PDF a escala 1:1 en hojas o para plotter, y trazo de corte.</p></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3l-3 4v12h6V9l3-2 3 2v10h6V7l-3-4"/><path d="M9 3c0 2 1.3 3 3 3s3-1 3-3"/></svg></div><h3>Patronaje 2D</h3><p>12 herramientas de dibujo y 17 prendas base que se ajustan a tus medidas.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Blusa, camisa, pantalones, faldas, vestido, chamarra, sudadera y más</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Piquetes, pinzas, hilo de tela y textos</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Biblioteca de piezas y «Mis piezas»</li></ul></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V8l4-4h8l4 4v12"/><path d="M7 20V10l3-3h4l3 3v10"/><path d="M10 20v-7h4v7"/></svg></div><h3>Graduación</h3><p>Automática con las reglas de cada prenda, o manual nodo por nodo.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Δx / Δy por nodo y por talla</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Nido de tallas a color</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>S–XL, XS–XXL y 28–36</li></ul></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 5v14M12 5v8h9.5M12 13v6"/></svg></div><h3>Trazo</h3><p>Acomodo automático de las piezas reales, con su margen de costura.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Consumo de tela por talla y por prenda</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Porcentaje de aprovechamiento</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Trazo por talla o combinado</li></ul></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/></svg></div><h3>Producción</h3><p>Ficha técnica, variantes de modelo y reporte de consumo.</p><ul><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ficha técnica en PDF</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Variantes de modelo con su consumo</li><li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Costo de tela por talla</li></ul></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Verificación de costuras</h3><p>Compara dos tramos que se cosen (costados, hombros, copa contra sisa) y te dice cuánto se pasan.</p></div>
+      <div class="card"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></div><h3>Exportación</h3><p>PDF a escala 1:1 en hojas A4 o para plotter, SVG y DXF estilo AAMA (en validación).</p></div>
     </div>
   </div></section>
 
   <section id="flujo" style="padding-top:20px"><div class="wrap">
-    <div class="sh"><small>Flujo de trabajo</small><h2>De la idea a la producción, con precisión digital</h2></div>
+    <div class="sh"><small>Flujo de trabajo</small><h2>Del patrón a la fábrica, en cuatro pasos</h2></div>
     <div class="flow">
-      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z"/></svg><b>Diseño</b><span>Medidas y concepto</span></div>
-      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3l-3 4v12h6V9l3-2 3 2v10h6V7l-3-4"/></svg><b>Patronaje</b><span>Piezas precisas</span></div>
-      <div class="step"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 5v14M12 5v8h9.5"/></svg><b>Producción</b><span>Corte optimizado</span></div>
-      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9h14v12M9 9V5h6v4"/></svg><b>Confección</b><span>Mayor eficiencia</span></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M6 3l-3 4v12h6V9l3-2 3 2v10h6V7l-3-4"/></svg><b>Diseña</b><span>Dibuja o parte de una prenda base</span></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V8l4-4h8l4 4v12"/></svg><b>Gradúa</b><span>Todas las tallas</span></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M7 5v14M12 5v8h9.5"/></svg><b>Traza</b><span>Consumo y aprovechamiento</span></div>
+      <div class="step"><svg class="ic" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/></svg><b>Produce</b><span>Ficha técnica y archivos</span></div>
     </div>
   </div></section>
 
   <section id="exportar"><div class="wrap split">
-    <img src="assets/img/screen-trazo.jpg" alt="Trazo de corte con acomodo automático de cuatro tallas" loading="lazy" width="1600" height="960">
-    <div><h3>Lleva tus patrones a cualquier taller</h3>
-      <p>Imprime el patrón a tamaño real en hojas carta con mapa de armado y cuadro de control, mándalo al plotter o pásalo a otro sistema CAD con DXF por capas.</p>
-      <div class="chips"><span class="chip">DXF-AAMA</span><span class="chip">PDF 1:1 en mosaico</span><span class="chip">PDF para plotter</span><span class="chip">Trazo de corte</span><span class="chip">Ficha técnica PDF</span><span class="chip">SVG en milímetros</span><span class="chip">Proyecto .hnv</span></div>
+    <img src="assets/img/screen-trazo.jpg" alt="Trazo de una blusa con sus piezas acomodadas en la tela" loading="lazy" width="800" height="494">
+    <div><h3>Lleva tus patrones al taller</h3>
+      <p>Imprime el patrón a tamaño real en hojas A4 para pegarlas, mándalo al plotter en PDF 1:1, o pásalo a otro sistema con SVG o DXF. El DXF usa la estructura de capas AAMA y todavía está en validación: pruébalo en tu versión antes de producir.</p>
+      <div class="chips"><span class="chip">PDF 1:1 en mosaico A4</span><span class="chip">PDF para plotter</span><span class="chip">Trazo: DXF, PDF y SVG</span><span class="chip">Ficha técnica PDF</span><span class="chip">SVG</span><span class="chip">DXF estilo AAMA (en validación)</span><span class="chip">Proyecto .hilonova.json</span></div>
     </div>
   </div></section>
 
   <section id="precio"><div class="wrap">
-    <div class="sh"><small>Precio</small><h2>Una licencia, todas las herramientas</h2><p>Paga en línea con tarjeta de forma segura. Si eres alumno del curso, canjea tu código de acceso dentro del software.</p></div>
+    <div class="sh"><small>Precio</small><h2>Un plan, un precio</h2><p>Todo el programa incluido. El cobro todavía no está activo: esto es lo que se ofrecerá.</p></div>
     <div class="price">
-      <div class="plan"><b id="pNombre">Licencia HiloNova CAD</b><div class="amt">$<span id="pPrecio">—</span> <small id="pMon">MXN · pago único</small></div>
-        <ul id="pIncluye"></ul>
-        <a class="btn pri" style="width:100%" href="app.html?comprar=1">Comprar licencia</a></div>
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2M17 6l3 3M14 9l2 2"/></svg></div><h3>¿Tomaste el curso de Patronaje Digital?</h3><p>Tu inscripción incluye un código de acceso. Crea tu cuenta, entra a <b>Activar licencia</b> y canjéalo.</p><div style="margin-top:18px"><a class="btn" href="app.html?comprar=1">Canjear código</a></div></div>
+      <div class="plan"><b>Completo</b><div class="amt">$490 <small>MXN · al mes · más IVA</small></div>
+        <ul>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Patronaje 2D:</b> 12 herramientas, biblioteca de piezas y 17 prendas base</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Graduación:</b> automática y manual (S–XL, XS–XXL y 28–36)</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Trazo:</b> consumo de tela por talla y porcentaje de aprovechamiento</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span><b>Producción:</b> ficha técnica, variantes de modelo y exportar PDF, SVG y DXF estilo AAMA (en validación)</span></li>
+          <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Proyectos ilimitados, ayuda dentro de la app y soporte por correo</span></li>
+        </ul>
+        <a class="btn pri" style="width:100%" href="programa/auth/signup/">Crear cuenta</a></div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2M17 6l3 3M14 9l2 2"/></svg></div><h3>¿Tomaste el curso de Patronaje Digital?</h3><p>Al terminar recibes un cupón de un solo uso, que se canjea dentro de las 24 horas. Te da 1 mes con el programa completo y 3 exportaciones. Después, el plan normal.</p><div style="margin-top:18px"><a class="btn" href="programa/pricing/">Ver el plan y el cupón</a></div></div>
     </div>
   </div></section>
 
   <section id="faq" style="padding-top:20px"><div class="wrap faq" style="max-width:820px">
     <div class="sh"><small>Preguntas frecuentes</small><h2>Antes de empezar</h2></div>
-    <details><summary>¿Necesito instalar algo?</summary><p>No. Funciona en el navegador (Chrome, Edge o Safari actualizados) en computadora o tablet. Tus proyectos se guardan en la nube con tu cuenta.</p></details>
-    <details><summary>¿Reemplaza a Gerber o Lectra?</summary><p>Es una herramienta de patronaje, graduación y trazo para talleres, estudiantes y marcas pequeñas. Exporta DXF con estructura AAMA para continuar en sistemas industriales; valida la importación en tu versión antes de producir.</p></details>
-    <details><summary>¿Qué incluye el modo demo?</summary><p>Puedes crear proyectos, editar patrones, graduar y generar trazos sin límite. La exportación de archivos y el guardado en la nube se activan con la licencia.</p></details>
-    <details><summary>¿Puedo imprimir el patrón en casa?</summary><p>Sí. El PDF en mosaico divide el patrón en hojas carta, A4 u oficio con marcas de unión y un cuadro de control de 5 cm para verificar la escala.</p></details>
-    <details><summary>¿Cómo se paga?</summary><p>Con tarjeta de crédito o débito a través de Stripe. La licencia se activa automáticamente al confirmar el pago.</p></details>
+    <details><summary>¿Necesito instalar algo?</summary><p>No. Funciona en el navegador de tu computadora; lo hemos probado en Chrome de escritorio. Todavía no está probado en otros navegadores ni en tablet.</p></details>
+    <details><summary>¿Dónde se guardan mis proyectos?</summary><p>En tu navegador, y se guardan solos. Descarga un respaldo desde Configuración para no perderlos si limpias el navegador o cambias de computadora. Por ahora no hay guardado en la nube.</p></details>
+    <details><summary>¿Reemplaza a Gerber o Lectra?</summary><p>No. Es una herramienta de patronaje, graduación y trazo para talleres, estudiantes y marcas pequeñas. El DXF sigue la estructura de capas AAMA y todavía está en validación: revisa la importación en tu versión antes de producir.</p></details>
+    <details><summary>¿Puedo imprimir el patrón en casa?</summary><p>Sí. El PDF en mosaico divide el patrón en hojas A4 con marcas para pegarlas, a escala 1:1. Verifica la escala con una regla antes de cortar.</p></details>
+    <details><summary>¿Cómo se paga?</summary><p>El cobro todavía no está activo. Cuando lo esté, será una suscripción mensual con tarjeta. Te avisaremos antes de activarlo.</p></details>
+    <details><summary>¿Hay descuento para alumnos del curso?</summary><p>Sí: un cupón de un solo uso (se canjea dentro de las 24 horas desde que lo recibes) con 1 mes del programa completo y 3 exportaciones. Los demás usuarios pagan el plan desde el primer día.</p></details>
   </div></section>
 </main>
 
@@ -169,19 +178,17 @@
   <span>© <span id="yr"></span> HiloNova</span>
 </div></footer>
 <a class="wa" href="https://wa.me/522361207101" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg></a>
-<script type="module">
-  import { PLAN } from './assets/js/firebase-config.js';
+<script>
   document.getElementById('yr').textContent = new Date().getFullYear();
-  document.getElementById('pNombre').textContent = PLAN.nombre;
-  document.getElementById('pPrecio').textContent = PLAN.precio.toLocaleString('es-MX');
-  document.getElementById('pMon').textContent = `${PLAN.moneda} · ${PLAN.periodo}`;
-  const ck = '<svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
-  document.getElementById('pIncluye').innerHTML = PLAN.incluye.map((x) => `<li>${ck}<span>${x}</span></li>`).join('');
-  const img = document.getElementById('shot');
-  document.querySelectorAll('#tabs .tab').forEach((t) => t.addEventListener('click', () => {
-    document.querySelectorAll('#tabs .tab').forEach((x) => x.classList.toggle('on', x === t));
-    img.src = `assets/img/screen-${t.dataset.img}.jpg`;
-  }));
+  var img = document.getElementById('shot');
+  var alts = { patronaje: 'Editor de patronaje 2D con el nido de tallas sobre una blusa clásica', graduacion: 'Pantalla de graduación con la gama de tallas y la tabla de tallaje', trazo: 'Trazo con las piezas de una blusa acomodadas en la tela', produccion: 'Ficha técnica para producción de una blusa clásica' };
+  document.querySelectorAll('#tabs .tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('#tabs .tab').forEach(function (x) { x.classList.toggle('on', x === t); });
+      img.src = 'assets/img/screen-' + t.dataset.img + '.jpg';
+      img.alt = alts[t.dataset.img];
+    });
+  });
 </script>
 </body>
 </html>
