@@ -71,7 +71,7 @@
     .split p { color: var(--muted); }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
     .chip { padding: 6px 12px; border-radius: 99px; border: 1px solid var(--line2); color: var(--text); font-size: 13px; background: rgba(19,31,58,.5); }
-    .price { max-width: 980px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px; }
+    .price { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
     .plan { padding: 32px; border-radius: 20px; border: 1px solid rgba(58,168,255,.5); background: linear-gradient(160deg, rgba(58,168,255,.16), rgba(139,123,255,.1)); box-shadow: 0 0 60px rgba(58,168,255,.15); }
     .plan .amt { font-family: Sora, Inter; font-size: 52px; font-weight: 800; margin: 8px 0 2px; }
     .plan .amt small { font-size: 16px; color: var(--muted); font-weight: 500; }
@@ -91,7 +91,7 @@
   </style>
 </head>
 <body>
-<div class="beta">Versión en pruebas: el cobro y las cuentas reales todavía no están activos. Tus proyectos se guardan en tu navegador.</div>
+<div class="beta">Versión en pruebas: el cobro todavía no está activo. Las cuentas son reales y tus patrones se guardan en tu navegador y en tu cuenta.</div>
 <header><div class="wrap nav">
   <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24"><path d="M5 19V5l7 9V5"/><path d="M12 19l7-14v14"/></svg></span>HiloNova CAD</a>
   <nav class="links"><a href="#modulos">Módulos</a><a href="#flujo">Flujo</a><a href="#exportar">Exportación</a><a href="#precio">Precio</a><a href="#faq">Preguntas</a></nav>
@@ -155,7 +155,6 @@
           <li><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Proyectos ilimitados, ayuda dentro de la app y soporte por WhatsApp</span></li>
         </ul>
         <a class="btn pri" style="width:100%" href="programa/auth/signup/">Crear cuenta</a></div>
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center"><div class="ci"><svg class="ic" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L21 2M17 6l3 3M14 9l2 2"/></svg></div><h3>¿Eres alumno de HiloNova?</h3><p>Quienes toman los cursos de HiloNova tienen un acceso especial al programa. Pregunta por él en tu curso.</p><div style="margin-top:18px"><a class="btn" href="programa/pricing/">Ver el plan</a></div></div>
     </div>
   </div></section>
 
