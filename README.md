@@ -13,6 +13,8 @@ Página de venta de **HiloNova CAD** (el programa de patronaje digital HiloNova 
 | `app.html` | Antes era una cáscara vacía; ahora redirige a `programa/auth/signin/`. |
 | `assets/img/screen-*.jpg` | Capturas reales del programa que usa la página. |
 | `programa/` | El programa (Next.js exportado como sitio estático con la ruta base `/programa`). **Es un archivo generado: no se edita a mano.** |
+| `CNAME` | Le dice a GitHub Pages que el sitio vive en **software.hilonovamx.com** (el dominio `hilonovamx.com` lo usa el sitio de formación `hilonova-web`; no tocarlo). |
+| `.nojekyll` | Evita que GitHub Pages ignore las carpetas que empiezan con `_` (el programa usa `programa/_next/`). Sin este archivo el programa no carga. |
 | `PANEL` | Archivo previo del repositorio, sin uso. |
 
 Los botones de la página («Entrar», «Crear cuenta») llevan a `programa/auth/...`.
@@ -42,7 +44,8 @@ Abrir los archivos con doble clic no funciona: los enlaces y las rutas necesitan
 - Cuentas reales con Firebase (correo/contraseña y Google) y patrones guardados también en la nube.
 - **El cobro está apagado**: todas las cuentas entran gratis hasta crear el enlace de pago de Stripe y encender el interruptor (`billing-config.ts` en el programa).
 - El DXF está en validación (aún no se prueba en Gerber).
-- Pendiente antes de publicar: dominio, probar el guardado en la nube con Firestore real, validación del maestro costurero y revisión legal de términos y privacidad.
+- **Dominio (26 de octubre):** `software.hilonovamx.com` (subdominio; DNS en Spaceship: un registro `CNAME` `software` → `teccapitalweb.github.io`). Ya están el `CNAME` y el `.nojekyll`; falta publicar (pasar a `main`, activar GitHub Pages con ese dominio y autorizar el dominio en Firebase → Authentication → Configuración → Dominios autorizados).
+- Pendiente antes de vender: enlaces de pago reales, validación del maestro costurero y revisión legal de términos y privacidad. El guardado en la nube con Firestore real ya se probó.
 
 ## Reglas de trabajo
 
