@@ -1,6 +1,6 @@
-# HiloNova CAD
+# HiloNova Studio (página de venta)
 
-Página de venta de **HiloNova CAD** (el programa de patronaje digital HiloNova Studio) y, dentro de la carpeta `programa/`, el programa ya compilado.
+Página de venta de **HiloNova Studio** (el programa de patronaje digital) y, dentro de la carpeta `programa/`, el programa ya compilado. El producto se llama **HiloNova Studio** en todos lados (el nombre «HiloNova CAD» ya no se usa; solo el repositorio conserva ese nombre).
 
 > Rama de trabajo: `dev/conectar-con-studio`. `main` no se toca hasta decidir publicar.
 > Historia completa de lo hecho (22–24 de octubre de 2026): en el repositorio `hilonova-studio`, archivo `docs/CAMBIOS-OCT-2026.md`.
